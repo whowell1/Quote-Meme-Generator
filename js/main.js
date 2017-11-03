@@ -11,10 +11,11 @@ function quotes() {
     $("#author").html(data.author);
     $("category").html(data.cat);
           var category = data.author;
+          var subject = data.cat;
       console.log(category);
       getGiphyImage(category);
-
       getGoogleBooks(category);
+
     },
     async: true,
     dataTyp: "json"
@@ -42,6 +43,7 @@ function getGoogleBooks(category) {
     url: "https://www.googleapis.com/books/v1/volumes?q=" + category,
     success: function(data) {
   var bookUrl = data;
+  console.log(data);
    var imgUrl = (data.items[0].volumeInfo.imageLinks.thumbnail);
     console.log(imgUrl);
    var imageString = "<img src=\"" + imgUrl + "\" />";
